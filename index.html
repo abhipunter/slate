@@ -477,32 +477,23 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 <span class="c1">// for multiple sentence as array</span>
     <span class="n">JSONArray</span> <span class="n">text_list</span> <span class="o">=</span> <span class="o">(</span><span class="n">JSONArray</span><span class="o">)</span><span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"[ \"Come on, lets play together\",\"Team performed well overall\" ]"</span><span class="o">);</span>
-
-
     <span class="n">String</span> <span class="n">sentiment_batch</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">sentiment_batch</span><span class="o">(</span><span class="n">text_list</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sentiment_batch</span><span class="o">);</span>
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
-<span class="err">```</span><span class="n">php</span>
-<span class="o">&lt;?</span><span class="n">php</span>
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 
-<span class="n">$curl</span> <span class="o">=</span> <span class="n">curl_init</span><span class="o">();</span>
+<span class="c1"># for single sentence 
+</span><span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/paralleldots/apis/autoload.php'</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">sentiment</span><span class="p">(</span><span class="s2">"Come on, lets play together"</span><span class="p">);</span>
 
-<span class="err">#</span> <span class="k">for</span> <span class="n">single</span> <span class="n">sentence</span> 
-<span class="nf">require</span><span class="o">(</span><span class="n">__DIR__</span> <span class="o">.</span> <span class="err">'</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paralleldots</span><span class="o">/</span><span class="n">apis</span><span class="o">/</span><span class="n">autoload</span><span class="o">.</span><span class="na">php</span><span class="err">'</span><span class="o">);</span>
-<span class="n">echo</span> <span class="nf">sentiment</span><span class="o">(</span><span class="s">"Come on, lets play together"</span><span class="o">);</span>
-
-
-
-
-
-
-<span class="err">#</span> <span class="k">for</span> <span class="n">multiple</span> <span class="n">sentence</span> <span class="n">as</span> <span class="n">array</span>
-<span class="nf">require</span><span class="o">(</span><span class="n">__DIR__</span> <span class="o">.</span> <span class="err">'</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paralleldots</span><span class="o">/</span><span class="n">apis</span><span class="o">/</span><span class="n">autoload</span><span class="o">.</span><span class="na">php</span><span class="err">'</span><span class="o">);</span>
-<span class="n">$text_list</span> <span class="o">=</span> <span class="s">"[\"drugs are fun\",\"don't do drugs, stay in school\",\"lol you a fag son\",\"I have a throat infection\"]"</span><span class="o">;</span>
-<span class="n">echo</span> <span class="nf">sentiment_batch</span><span class="o">(</span><span class="n">$text_list</span><span class="o">);</span>
+<span class="c1"># for multiple sentence as array
+</span><span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/paralleldots/apis/autoload.php'</span><span class="p">);</span>
+<span class="nv">$text_list</span> <span class="o">=</span> <span class="s2">"[</span><span class="se">\"</span><span class="s2">drugs are fun</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">don't do drugs, stay in school</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">lol you a fag son</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">I have a throat infection</span><span class="se">\"</span><span class="s2">]"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">sentiment_batch</span><span class="p">(</span><span class="nv">$text_list</span><span class="p">);</span>
 
 
-<span class="o">?&gt;</span>
+<span class="cp">?&gt;</span>
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">Newtonsoft.Json.Linq</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">RestSharp</span><span class="p">;</span>
@@ -511,9 +502,6 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 <span class="c1">// for single sentence</span>
 <span class="n">String</span> <span class="n">sentiment</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">sentiment</span><span class="p">(</span><span class="s">"Come on, lets play together"</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">sentiment</span><span class="p">);</span>
-
-
-
 <span class="c1">// for multiple sentence as array</span>
 <span class="n">JArray</span> <span class="n">text_list</span> <span class="p">=</span> <span class="n">JArray</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="s">"[\"Come on,lets play together\",  \"Team performed well overall.\"]"</span><span class="p">);</span>
 <span class="n">String</span> <span class="n">sentiment_batch</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">sentiment_batch</span><span class="p">(</span><span class="n">text_list</span><span class="p">);</span>
@@ -888,54 +876,20 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 </code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: application/json'</span> --header <span class="s1">'Accept: application/json'</span> <span class="s1">'https://apis.paralleldots.com/v3/ner?text=Apple was founded by Steve Jobs.&amp;api_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>
 
 curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formtext"</span><span class="o">}</span><span class="s1">'https://apis.paralleldots.com/v3/ner_batch?text=%5B%22Apple was founded by Steve Jobs.%22%2C%22Apple Inc. is an American multinational technology company headquartered in Cupertino, California%22%5D&amp;api_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.OkHttpClient</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.Request</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.Response</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.MediaType</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.MultipartBody</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.RequestBody</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">okhttp3.ResponseBody</span><span class="o">;</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">com.paralleldots.paralleldots.App</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.simple.JSONObject</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.simple.JSONArray</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.json.simple.parser.JSONParser</span><span class="o">;</span>
 
 <span class="c1">// for single sentences</span>
     <span class="n">String</span> <span class="n">ner</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">ner</span><span class="o">(</span><span class="s">"Apple was founded by Steve Jobs."</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ner</span><span class="o">);</span>
-
-    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.paralleldots.com/v3/ner"</span><span class="o">;</span>
-    <span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
-    <span class="n">MediaType</span> <span class="n">mediatype</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-    <span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediatype</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
-    <span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-      <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="n">url</span><span class="o">+</span><span class="s">"?api_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;text=Apple was founded by Steve Jobs."</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"cache-control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-    <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">body</span><span class="o">().</span><span class="na">string</span><span class="o">());</span>
-
 <span class="c1">// for multiple sentence as array</span>
 
     <span class="n">JSONArray</span> <span class="n">text_list</span> <span class="o">=</span> <span class="o">(</span><span class="n">JSONArray</span><span class="o">)</span><span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"[ \"Apple was founded by Steve Jobs\", \"Apple Inc. is an American multinational technology company headquartered in Cupertino.\"]"</span><span class="o">);</span>
 
     <span class="n">String</span> <span class="n">ner_batch</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">ner_batch</span><span class="o">(</span><span class="n">text_list</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ner_batch</span><span class="o">);</span>
-
-
-    <span class="n">String</span> <span class="n">url</span> <span class="o">=</span> <span class="s">"https://apis.paralleldots.com/v3/ner_batch"</span><span class="o">;</span>
-    <span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
-    <span class="n">MediaType</span> <span class="n">mediatype</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"application/json"</span><span class="o">);</span>
-    <span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediatype</span><span class="o">,</span> <span class="s">""</span><span class="o">);</span>
-    <span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
-      <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="n">url</span><span class="o">+</span><span class="s">"?api_key=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&amp;text=[\"Apple was founded by Steve Jobs\",\"Apple Inc. is an American multinational technology company headquartered in Cupertino.\"]"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"cache-control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
-      <span class="o">.</span><span class="na">build</span><span class="o">();</span>
-    <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
-    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">body</span><span class="o">().</span><span class="na">string</span><span class="o">());</span>
-
-
-
-
 
 </code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
@@ -1157,7 +1111,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 <span class="n">text</span><span class="o">=</span><span class="s2">"For the Yankees, it took a stunning comeback after being down 2-0 to the Indians in the American League Division Series. For the Astros, it took beating Chris Sale to top the Red Sox."</span>
 <span class="nb">puts</span><span class="p">(</span><span class="n">keywords</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
 
-<span class="n">r</span>
+
 <span class="c1"># for multiple sentence as  array</span>
 
 <span class="n">text_array</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"For the Yankees, it took a stunning comeback after being down 2-0 to the Indians in the American League Division Series. For the Astros, it took beating Chris Sale to top the Red Sox."</span><span class="p">,</span><span class="s2">"U.S. stocks edged higher on Friday, with the S&amp;P 500 hitting a more than five-month high, as gains in industrials and other areas offset a drop in financials. Fred Katayama reports.."</span><span class="p">]</span>
