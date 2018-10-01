@@ -704,8 +704,9 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 </code></pre><pre class="highlight r tab-r"><code><span class="w">
 </span><span class="n">url</span><span class="o">=</span><span class="s2">"https://apis.paralleldots.com/v3/similarity"</span><span class="w">
-</span><span class="n">text</span><span class="o">=</span><span class="s1">'["There is a tipping point’: UN warns climate change goals laid out in Paris accord are almost out of reach","Global warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report"]'</span><span class="w">
-</span><span class="n">result</span><span class="o">&lt;-</span><span class="n">similarity</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">api_key</span><span class="p">)</span><span class="w">
+</span><span class="n">text</span><span class="o">=</span><span class="s2">"There is a tipping point’: UN warns climate change goals laid out in Paris accord are almost out of reach"</span><span class="w">
+</span><span class="n">text2</span><span class="o">=</span><span class="s2">"Global warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report"</span><span class="w">
+</span><span class="n">result</span><span class="o">&lt;-</span><span class="n">similarity</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">text1</span><span class="p">,</span><span class="n">text2</span><span class="p">,</span><span class="n">api_key</span><span class="p">)</span><span class="w">
 
 </span></code></pre>
 <blockquote>
