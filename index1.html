@@ -1,0 +1,939 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ParallelDots Visual API</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index1" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;java&quot;,&quot;php&quot;,&quot;csharp&quot;,&quot;r&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="java">java</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="csharp">csharp</a>
+              <a href="#" data-language-name="r">r</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#installation" class="toc-h1 toc-link" data-title="Installation">Installation</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#api-parameters" class="toc-h1 toc-link" data-title="API Parameters">API Parameters</a>
+          </li>
+          <li>
+            <a href="#facial-emotion" class="toc-h1 toc-link" data-title="Facial Emotion">Facial Emotion</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#image-labels" class="toc-h1 toc-link" data-title="Image Labels">Image Labels</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#post-2" class="toc-h2 toc-link" data-title="POST"><strong><em>POST</em></strong></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://www.paralleldots.com/sign-up'>Sign Up for a Developer Key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>AI Powered Visual Analysis Apis  </p>
+
+<p><strong>Version:</strong> 3.0</p>
+
+<p>Base URL - https://apis.paralleldots.com/v3</p>
+<h1 id='installation'>Installation</h1><pre class="highlight ruby tab-ruby"><code><span class="no">From</span> <span class="no">Gem</span><span class="p">:</span>
+
+<span class="n">gem</span> <span class="n">install</span> <span class="n">paralleldots</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">From</span> <span class="n">PyPI</span><span class="p">:</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">paralleldots</span>
+
+<span class="n">From</span> <span class="n">Source</span><span class="p">:</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ParallelDots</span><span class="o">/</span><span class="n">ParallelDots</span><span class="o">-</span><span class="n">Python</span><span class="o">-</span><span class="n">API</span><span class="o">.</span><span class="n">git</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+
+</code></pre><pre class="highlight java tab-java"><code>
+<span class="n">Use</span> <span class="n">the</span> <span class="n">JAR</span>
+<span class="n">paralleldots</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="na">jar</span>
+<span class="n">Path</span> <span class="n">to</span> <span class="n">JAR</span>
+<span class="nl">path:</span> <span class="n">target</span><span class="o">/</span><span class="n">paralleldots</span><span class="o">-</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="na">jar</span>
+
+<span class="n">Dependencies</span>
+<span class="n">okhttp</span><span class="o">-</span><span class="mf">3.10</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="na">jar</span>
+<span class="n">okio</span><span class="o">-</span><span class="mf">1.14</span><span class="o">.</span><span class="mi">0</span><span class="o">.</span><span class="na">jar</span>
+<span class="n">json</span><span class="o">-</span><span class="n">simple</span><span class="o">-</span><span class="mf">1.1</span><span class="o">.</span><span class="na">jar</span>
+</code></pre><pre class="highlight php tab-php"><code>1.Create a composer.json file in your project's directory.
+
+2.Write the following in the file:
+{
+  "require": {
+    "paralleldots/apis": "*"
+  },
+  "minimum-stability": "dev"
+}
+3.Run the following command in the same directory (NOTE: You must have composer installed):"
+
+composer install
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">Open</span> <span class="n">the</span> <span class="n">console</span> <span class="k">in</span> <span class="n">Visual</span> <span class="n">Studio</span> <span class="k">using</span> <span class="nn">the</span> <span class="n">Tools</span> <span class="p">&gt;</span> <span class="n">NuGet</span> <span class="n">Package</span> <span class="n">Manager</span> <span class="p">&gt;</span> <span class="n">Package</span> <span class="n">Manager</span> <span class="n">Console</span> <span class="n">command</span><span class="p">.</span>
+
+<span class="n">PM</span><span class="p">&gt;</span> <span class="n">Install</span><span class="p">-</span><span class="n">Package</span> <span class="n">ParallelDots</span>
+
+</code></pre><pre class="highlight r tab-r"><code><span class="n">library</span><span class="p">(</span><span class="s2">"devtools"</span><span class="p">)</span><span class="w">
+</span><span class="n">devtools</span><span class="o">::</span><span class="n">install</span><span class="p">(</span><span class="o">&lt;</span><span class="n">path_to_locally_cloned_repo</span><span class="o">&gt;</span><span class="p">)</span><span class="w">
+
+</span><span class="n">Dependencies</span><span class="o">:</span><span class="w">
+</span><span class="n">httr</span><span class="w">
+</span><span class="n">jsonlite</span><span class="w">
+
+</span></code></pre>
+<p>For setup and installation instruction, please visit our <a href="https://github.com/paralleldots"> Github Page </a>. Specifically, below are the links to each of our Client Libraries:</p>
+
+<p>- <a href="https://github.com/ParallelDots/ParallelDots-CSharp-API"> C#</a>
+    - <a href="https://github.com/ParallelDots/ParallelDots-Java-API">Java</a>
+    - <a href="https://github.com/ParallelDots/ParallelDots-Python-API">Python</a>
+    - <a href="https://github.com/ParallelDots/ParallelDots-PHP-API">PHP</a>
+    - <a href="https://github.com/ParallelDots/ParallelDots-Ruby-API">Ruby</a>
+    - <a href="https://github.com/ParallelDots/ParallelDots-R-API">NodeJs</a></p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">set_api_key</span><span class="p">(</span><span class="s2">"xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">set_api_key</span>
+
+<span class="n">set_api_key</span><span class="p">(</span><span class="s">"xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>NA
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">(</span><span class="s">"xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="o">);</span>
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+# Setting your API key
+set_api_key("xxxxxxxxxxxxxxxxxxxxxxxx"); 
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="err">#</span> <span class="n">Import</span> <span class="n">wrapper</span> <span class="k">namespace</span>
+<span class="nn">using</span> <span class="n">ParallelDots</span>
+
+<span class="err">#</span> <span class="n">Initialize</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">api</span> <span class="k">class</span>
+<span class="nc">paralleldots</span> <span class="n">pd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">paralleldots</span><span class="p">(</span><span class="s">"xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="p">);</span>
+
+</code></pre><pre class="highlight r tab-r"><code><span class="c1"># Import paralleldots 
+</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="s2">"ParallelDots"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># set your API Key
+</span><span class="n">api_key</span><span class="o">=</span><span class="s2">"xxxxxxxxxxxxxxxxxxxxxxxx"</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Make sure to replace <code>xxxxxxxxxxxxxxxxxxxxxxxx</code> with your API key.</p>
+</blockquote>
+
+<p>ParallelDots Visual Intelligence APIs uses API keys to authenticate requests to the API. You can register for a new API key at our <a href="https://www.paralleldots.com/sign-up">developer portal</a>.</p>
+
+<aside class="notice">
+You must replace <code>xxxxxxxxxxxxxxxxxxxxxxxx</code> with your personal API key.
+</aside>
+<h1 id='api-parameters'>API Parameters</h1>
+<p>ParallelDots Visual Intelligence API accepts two parameters - Image Path or Image URL and api_key. Maximum Image size should not exceed 10 MB. Valid image formats are .jpg, .jpeg, .png, .bmp and .tiff</p>
+
+<p>Either path to image file or an image url is mandatory, do not send both of them simultaneously.</p>
+<h1 id='facial-emotion'>Facial Emotion</h1><h2 id='post'><strong><em>POST</em></strong></h2>
+<p><strong>Summary:</strong> Facial Emotion API can detect different emotion types from facial expressions in a potrait image.</p>
+
+<p><strong>Description:</strong> This API can be used to monitor emotions associated with visual content shared on social media or photo sharing apps or build interactive video chat applications.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="c1"># when sending a image file</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">"&lt;path_to_image&gt;"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">facial_emotion</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># when sending a image url</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s2">"&lt;url_to_image&gt;"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">facial_emotion_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
+
+<span class="c"># when sending a image file</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">"&lt;path_to_image&gt;"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">facial_emotion</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c"># when sending a image url</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s">"&lt;url_to_image&gt;"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">facial_emotion_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+
+
+<span class="c">#or </span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="c"># When sending a image file.</span>
+
+<span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"https://apis.paralleldots.com/v3/facial_emotion"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
+
+<span class="c"># When sending a image url</span>
+
+<span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"https://apis.paralleldots.com/v3/facial_emotion"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">,</span><span class="s">"url"</span><span class="p">:</span><span class="s">"&lt;url_to_image&gt;"</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</code></pre><pre class="highlight shell tab-shell"><code>To sending a image file.
+
+curl -X POST -F <span class="s1">'file=@&lt;path_to_image&gt;'</span> -F <span class="s1">'api_key=xxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>  https://apis.paralleldots.com/v3/facial_emotion
+
+when sending a image url.
+
+curl -X POST -F <span class="s1">'url=&lt;url_to_image&gt;'</span> -F <span class="s1">'api_key=xxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>  https://apis.paralleldots.com/v3/facial_emotion
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="c1">// when sending a image file</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">path_to_image</span><span class="o">=</span><span class="s">"&lt;path_to_image&gt;"</span>
+<span class="n">String</span> <span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">facial_emotion</span><span class="o">(</span><span class="n">path_to_image</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">facial_emotion</span><span class="o">);</span>
+
+<span class="c1">// when  sending a image url</span>
+
+<span class="n">String</span> <span class="n">facial_emotion_url</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">facial_emotion_url</span><span class="o">(&lt;</span><span class="n">url_to_image</span><span class="o">&gt;);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">facial_emotion_url</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+
+# when sending a image file
+
+$path_to_image = "<span class="nt">&lt;path</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
+echo facial_emotion($path_to_image);
+
+# when sending a image url
+
+$url_to_image = "<span class="nt">&lt;url</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
+echo facial_emotion_url($url_to_image);
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">ParallelDots</span>
+<span class="c1">// when sending a image file</span>
+
+<span class="n">String</span> <span class="n">path_to_image</span> <span class="p">=</span> <span class="s">@"&lt;path_to_image&gt;"</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"facial emotion"</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">facial_emotion</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">facial_emotion</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">facial_emotion</span><span class="p">);</span>
+
+<span class="c1">// when sending a image url</span>
+
+<span class="n">String</span> <span class="n">facial_emotion_url</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">facial_emotion_url</span><span class="p">(&lt;</span><span class="n">url_to_image</span><span class="p">&gt;);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">facial_emotion_url</span><span class="p">);</span>
+
+</code></pre><pre class="highlight r tab-r"><code><span class="n">library</span><span class="p">(</span><span class="s2">"ParallelDots"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://apis.paralleldots.com/v3/facial_emotion"</span><span class="w">
+</span><span class="n">image_url</span><span class="o">=</span><span class="s2">"&lt;image url&gt;"</span><span class="w"> </span><span class="c1">#must be https
+</span><span class="n">result</span><span class="o">&lt;-</span><span class="n">facial_emotion</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">image_url</span><span class="p">,</span><span class="n">api_key</span><span class="p">)</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"facial_emotion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.46334898471832275</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angry"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23679578304290771</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutral"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.09110680967569351</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sad"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0540882833302021</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fear"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05155337601900101</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Surprise"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05155337601900101</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Happy"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05155337601900101</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disgust"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><strong>Endpoint</strong> https://apis.paralleldots.com/v3/facial_emotion</p>
+
+<p><code>***POST*** /facial_emotion</code> </p>
+
+<p><strong>Parameters</strong></p>
+
+<p>Either file or url is mandatory , do not send both parameters.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>query</td>
+<td>Pass url of image file</td>
+<td>Yes if file not provided</td>
+<td>string</td>
+</tr>
+<tr>
+<td>file</td>
+<td>query</td>
+<td>Pass a image file</td>
+<td>Yes if url not provided</td>
+<td>file</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>query</td>
+<td>Apikey</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>facial_emotion</td>
+<td>Contains all the tags and their corresponding score</td>
+<td>array</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>Name of the emotion i.e (Angry,Disgust,Fear,Happy,Sad,Surprise,Neutral)</td>
+<td>string</td>
+</tr>
+<tr>
+<td>score</td>
+<td>The confidence score of the emotion in the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>float</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Error Codes</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Text</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>There was no new data to return.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Backend Error. We will investigate the issue and ensure it will be fixed as a priority</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>No Input image uploaded or Input URL given.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid Credentials. Please provide valid API key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Visual API Daily/Monthy Limit Exceeded. Please upgrade your account from your user dashboard at <a href="https://user.apis.paralleldots.com/user_dashboard">https://user.apis.paralleldots.com/user_dashboard</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Too Many Requests. Please try after sometime.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Invalid Format. Parameter url should be string</td>
+</tr>
+</tbody></table>
+<h1 id='image-labels'>Image Labels</h1><h2 id='post-2'><strong><em>POST</em></strong></h2>
+<p><strong>Summary:</strong> Find labels of an image</p>
+
+<p><strong>Description:</strong> Image recognition API finds the label(s) (names) of objects in the image along with its probability score. Image Recognition is beneficial to build visual search capability in your application letting you create a compelling discovery engine for your items.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="c1"># when sending a image file</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">"&lt;path_to_image&gt;"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">object_recognizer</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># when sending a image url</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s2">"url_to_path"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">object_recognizer_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
+
+<span class="c"># when sending a image file</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">"&lt;path_to_image&gt;"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">object_recognizer</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="c"># when sending a image url</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s">"&lt;url_to_image&gt;"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">object_recognizer_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">))</span>
+
+<span class="c">#or </span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c">#when sending a image file</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"https://apis.paralleldots.com/v3/object_recognizer"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
+
+<span class="c"># When sending a url image</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"https://apis.paralleldots.com/v3/object_recognizer"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">,</span><span class="s">"url"</span><span class="p">:</span><span class="s">"&lt;url_to_image&gt;"</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</code></pre><pre class="highlight shell tab-shell"><code>
+To send a image file.
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@&lt;path_to_image&gt;"</span> -F <span class="s2">"api_key=xxxxxxxxxxxxxxxxxxxxxxxx"</span> <span class="s1">'https://apis.paralleldots.com/v3/object_recognizer'</span>
+
+To send a image url.
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=&lt;url_to_image&gt;" -F "api_key=xxxxxxxxxxxxxxxxxxxxxxxx" '</span>https://apis.paralleldots.com/v3/object_recognizer<span class="s1">'
+
+
+</span></code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="c1">// when sending a image file</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">path_to_image</span><span class="o">=</span><span class="s">"&lt;path_to_image&gt;"</span>
+<span class="n">String</span> <span class="n">object_recognizer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">object_recognizer</span><span class="o">(</span><span class="n">path_to_image</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">object_recognizer</span><span class="o">);</span>
+
+<span class="c1">// when  sending a image url</span>
+
+<span class="n">String</span> <span class="n">object_recognizer_url</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">object_recognizer_url</span><span class="o">(&lt;</span><span class="n">url_to_image</span><span class="o">&gt;);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">object_recognizer_url</span><span class="o">);</span>
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+
+// when sending a image file
+
+$path_to_image = "<span class="nt">&lt;path</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
+echo object_recognizer($path_to_image);
+
+// when sending a image url
+
+$url_to_image = "<span class="nt">&lt;url</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
+echo object_recognizer_url($url_to_image);
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">ParallelDots</span>
+<span class="c1">// when sending a image file</span>
+
+<span class="n">String</span> <span class="n">path_to_image</span> <span class="p">=</span> <span class="s">@"&lt;path_to_image&gt;"</span><span class="p">;</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"object_recognizer"</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">object_recognizer</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">object_recognizer</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">object_recognizer</span><span class="p">);</span>
+
+<span class="c1">// when sending a image url</span>
+
+<span class="n">String</span> <span class="n">object_recognizer_url</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">object_recognizer_url</span><span class="p">(&lt;</span><span class="n">url_to_image</span><span class="p">&gt;);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">object_recognizer_url</span><span class="p">);</span>
+
+</code></pre><pre class="highlight r tab-r"><code><span class="n">library</span><span class="p">(</span><span class="s2">"ParallelDots"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://apis.paralleldots.com/v3/object_recognizer"</span><span class="w">
+</span><span class="n">image_url</span><span class="o">=</span><span class="s2">"&lt;image url&gt;"</span><span class="w"> </span><span class="c1">#must be https
+</span><span class="n">result</span><span class="o">&lt;-</span><span class="n">object_recognizer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">image_url</span><span class="p">,</span><span class="n">api_key</span><span class="p">)</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fashion"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.36841973662376404</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2704277038574219</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Photo shoot"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21180585026741028</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dress"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19927018880844116</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Photograph"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19799776375293732</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Person"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.18744145333766937</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Model"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16371771693229675</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beauty"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16217313706874847</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Woman"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15185585618019104</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11858072131872177</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><strong>Endpoint</strong> https://apis.paralleldots.com/v3/object_recognizer</p>
+
+<p><code>***POST*** /object_recognizer</code> </p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>url</td>
+<td>query</td>
+<td>Pass url of image file</td>
+<td>Yes if file not provided</td>
+<td>string</td>
+</tr>
+<tr>
+<td>file</td>
+<td>query</td>
+<td>Pass a image file</td>
+<td>Yes if url not provided</td>
+<td>file</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>query</td>
+<td>Apikey</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>Contains all the tags and their corresponding score</td>
+<td>array</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>Name of the emotion i.e (Angry,Disgust,Fear,Happy,Sad,Surprise,Neutral)</td>
+<td>string</td>
+</tr>
+<tr>
+<td>score</td>
+<td>The confidence score of the emotion in the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>float</td>
+</tr>
+</tbody></table>
+
+<p><strong>HTTP Error Codes</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Text</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>There was no new data to return.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>Backend Error. We will investigate the issue and ensure it will be fixed as a priority</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>No Input image uploaded or Input URL given.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid Credentials. Please provide valid API key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Visual API Daily/Monthy Limit Exceeded. Please upgrade your account from your user dashboard at <a href="https://user.apis.paralleldots.com/user_dashboard">https://user.apis.paralleldots.com/user_dashboard</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Too Many Requests. Please try after sometime.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Invalid Format. Parameter url should be string</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<aside class="notice">
+This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+</aside>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone -- The kitten requested has been removed from our servers.</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&#39;m a teapot.</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="java">java</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="csharp">csharp</a>
+                <a href="#" data-language-name="r">r</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
