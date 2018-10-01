@@ -435,8 +435,6 @@ You must replace <code>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code> with your ow
 
 
 <span class="c1"># for multiple sentence as array</span>
-
-
 <span class="n">text_array</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Come on,lets play together"</span><span class="p">,</span><span class="s2">"Team performed well overall."</span><span class="p">]</span>
 <span class="nb">puts</span><span class="p">(</span><span class="n">batch_sentiment</span><span class="p">(</span><span class="n">text_array</span><span class="p">)</span>
 
@@ -446,14 +444,12 @@ You must replace <code>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code> with your ow
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c"># for single sentence</span>
-
 <span class="n">text</span><span class="o">=</span><span class="s">"Come on, lets play together"</span>
 <span class="n">lang_code</span><span class="o">=</span><span class="s">"en"</span>
 <span class="n">response</span><span class="o">=</span><span class="n">paralleldots</span><span class="o">.</span><span class="n">sentiment</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">lang_code</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 
 <span class="c"># for multiple sentence as array</span>
-
 <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="s">"Come on,lets play together"</span><span class="p">,</span><span class="s">"Team performed well overall."</span><span class="p">]</span>
 <span class="n">response</span><span class="o">=</span><span class="n">paralleldots</span><span class="o">.</span><span class="n">batch_sentiment</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
@@ -467,13 +463,8 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 <span class="kn">import</span> <span class="nn">org.json.simple.parser.JSONParser</span><span class="o">;</span>
 
 <span class="c1">// for single sentences</span>
-
     <span class="n">String</span> <span class="n">sentiment</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">sentiment</span><span class="o">(</span><span class="s">"Come on, lets play together"</span><span class="o">);</span>
     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sentiment</span><span class="o">);</span>
-
-
-
-
 
 <span class="c1">// for multiple sentence as array</span>
     <span class="n">JSONArray</span> <span class="n">text_list</span> <span class="o">=</span> <span class="o">(</span><span class="n">JSONArray</span><span class="o">)</span><span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"[ \"Come on, lets play together\",\"Team performed well overall\" ]"</span><span class="o">);</span>
@@ -489,7 +480,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 <span class="c1"># for multiple sentence as array
 </span><span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/paralleldots/apis/autoload.php'</span><span class="p">);</span>
-<span class="nv">$text_list</span> <span class="o">=</span> <span class="s2">"[</span><span class="se">\"</span><span class="s2">drugs are fun</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">don't do drugs, stay in school</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">lol you a fag son</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">I have a throat infection</span><span class="se">\"</span><span class="s2">]"</span><span class="p">;</span>
+<span class="nv">$text_list</span> <span class="o">=</span> <span class="s2">"[ </span><span class="se">\"</span><span class="s2">Come on, lets play together</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Team performed well overall</span><span class="se">\"</span><span class="s2"> ]"</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nx">sentiment_batch</span><span class="p">(</span><span class="nv">$text_list</span><span class="p">);</span>
 
 
@@ -699,7 +690,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 
 <span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/vendor/paralleldots/apis/autoload.php'</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">similarity</span><span class="p">(</span><span class="s2">"There is a tipping point"</span><span class="p">,</span> <span class="s2">"UN warns climate change goals laid out in Paris accord are almost out of reach."</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">similarity</span><span class="p">(</span><span class="s2">"There is a tipping point:UN warns climate change goals laid out in Paris accord are almost out of reach"</span><span class="p">,</span> <span class="s2">"Global warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report"</span><span class="p">);</span>
 <span class="cp">?&gt;</span>
 
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
@@ -707,13 +698,13 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 <span class="k">using</span> <span class="nn">RestSharp</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
 
-<span class="n">String</span> <span class="n">similarity</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">similarity</span><span class="p">(</span><span class="s">"There is a tipping point: UN warns climate change goals laid out in Paris accord are almost out of reach"</span><span class="p">,</span> <span class="s">"TGlobal warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report"</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">similarity</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">similarity</span><span class="p">(</span><span class="s">"There is a tipping point: UN warns climate change goals laid out in Paris accord are almost out of reach"</span><span class="p">,</span> <span class="s">"Global warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report"</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">similarity</span><span class="p">);</span>
 
 
 </code></pre><pre class="highlight r tab-r"><code><span class="w">
 </span><span class="n">url</span><span class="o">=</span><span class="s2">"https://apis.paralleldots.com/v3/similarity"</span><span class="w">
-</span><span class="n">text</span><span class="o">=</span><span class="s1">'["Global warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report","There is a tipping point’: UN warns climate change goals laid out in Paris accord are almost out of reach"]'</span><span class="w">
+</span><span class="n">text</span><span class="o">=</span><span class="s1">'["There is a tipping point’: UN warns climate change goals laid out in Paris accord are almost out of reach","Global warming set to exceed Paris agreement’s 1.5C limit by 2040s, according to draft UN report"]'</span><span class="w">
 </span><span class="n">result</span><span class="o">&lt;-</span><span class="n">similarity</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">api_key</span><span class="p">)</span><span class="w">
 
 </span></code></pre>
@@ -849,9 +840,6 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 
 <span class="c1"># for multiple  sentence as array</span>
-
-
-
 <span class="n">text_array</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Apple was founded by Steve Jobs."</span><span class="p">,</span><span class="s2">"Apple Inc. is an American multinational technology company headquartered in Cupertino, California"</span><span class="p">]</span>
 <span class="nb">puts</span><span class="p">(</span><span class="n">batch_ner</span><span class="p">(</span><span class="n">text_array</span><span class="p">))</span>
 
@@ -864,8 +852,6 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 <span class="n">text</span><span class="o">=</span><span class="s">"Apple was founded by Steve Jobs."</span>
 <span class="n">response</span><span class="o">=</span><span class="n">paralleldots</span><span class="o">.</span><span class="n">ner</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
-
-
 
 <span class="c"># for multiple sentence as array</span>
 <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="s">"Apple was founded by Steve Jobs."</span><span class="p">,</span><span class="s">"Apple Inc. is an American multinational technology company headquartered in Cupertino, California"</span><span class="p">]</span>
@@ -901,7 +887,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 
 <span class="c1"># for multiple sentences as array.
-</span><span class="nv">$text_list</span> <span class="o">=</span> <span class="s2">"[</span><span class="se">\"</span><span class="s2">drugs are fun</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">don't do drugs, stay in school</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">lol you a fag son</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">I have a throat infection</span><span class="se">\"</span><span class="s2">]"</span><span class="p">;</span>
+</span><span class="nv">$text_list</span> <span class="o">=</span> <span class="s2">"[ </span><span class="se">\"</span><span class="s2">Apple was founded by Steve Jobs</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">Apple Inc. is an American multinational technology company headquartered in Cupertino.</span><span class="se">\"</span><span class="s2">]"</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nx">ner_batch</span><span class="p">(</span><span class="nv">$text_list</span><span class="p">);</span>
 
 
@@ -915,7 +901,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 
 <span class="c1">// for single sentences</span>
-<span class="n">String</span> <span class="n">ner</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">ner</span><span class="p">(</span><span class="s">"Narendra Modi is the prime minister of India"</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">ner</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">ner</span><span class="p">(</span><span class="s">"Apple was founded by Steve Jobs"</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">ner</span><span class="p">);</span>
 
 <span class="n">v</span>
@@ -2031,7 +2017,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 </span><span class="c1"># for single sentence
 </span><span class="w">
 </span><span class="n">url</span><span class="o">=</span><span class="s2">"https://apis.paralleldots.com/v3/abuse"</span><span class="w">
-</span><span class="n">text</span><span class="o">=</span><span class="s2">"How do I cancel my ticket from the app?"</span><span class="w">
+</span><span class="n">text</span><span class="o">=</span><span class="s2">"you f**king a$$hole"</span><span class="w">
 </span><span class="n">result</span><span class="o">&lt;-</span><span class="n">abuse</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">api_key</span><span class="p">)</span><span class="w">
 
 </span><span class="c1"># for multiple sentence 
@@ -2231,7 +2217,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 
 </code></pre><pre class="highlight r tab-r"><code><span class="n">url</span><span class="o">=</span><span class="s2">"https://apis.paralleldots.com/v3/custom_classifier"</span><span class="w">
 </span><span class="n">text</span><span class="o">=</span><span class="s2">"Donald Trump is the President of the United States of America"</span><span class="w">
-</span><span class="n">category</span><span class="o">=</span><span class="s1">'{ "finance": { "markets", "economy", "shares" }, "world politics": { "diplomacy", "UN", "war" } }'</span><span class="w">
+</span><span class="n">category</span><span class="o">=</span><span class="s1">'{'</span><span class="n">world</span><span class="w"> </span><span class="n">politics</span><span class="s1">': ['</span><span class="n">diplomacy</span><span class="s1">', '</span><span class="n">UN</span><span class="s1">', '</span><span class="n">war</span><span class="s1">'], '</span><span class="n">india</span><span class="s1">': ['</span><span class="n">congress</span><span class="s1">', '</span><span class="n">india</span><span class="s1">', '</span><span class="n">bjp</span><span class="s1">'], '</span><span class="n">finance</span><span class="s1">': ['</span><span class="n">markets</span><span class="s1">', '</span><span class="n">economy</span><span class="s1">', '</span><span class="n">shares</span><span class="s1">']}'</span><span class="w">
 </span><span class="n">result</span><span class="o">&lt;-</span><span class="n">custom_classifier</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">api_key</span><span class="p">,</span><span class="n">category</span><span class="p">)</span><span class="w">
 </span></code></pre>
 <blockquote>
@@ -2453,7 +2439,6 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-text'</span
 <span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
 
 <span class="c1">// for single sentence </span>
-<span class="n">String</span> <span class="n">phrase_extractor</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">phrase_extractor</span><span class="p">(</span><span class="s">"For the Yankees, it took a stunning comeback after being down 2-0 to the Indians in the American League Division Series. For the Astros, it took beating Chris Sale to top the Red Sox.."</span><span class="p">);</span>
 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">phrase_extractor</span><span class="p">);</span>
 
 
